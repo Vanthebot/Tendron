@@ -1,6 +1,6 @@
 class Tendril
 {
-  public final static int SEG_LENGTH = 4; //length of each segment in the tendril
+  public final static int SEG_LENGTH = 10; //length of each segment in the tendril
   private int myNumSegments, myX, myY;
   private double myAngle;
   
@@ -13,9 +13,34 @@ class Tendril
   public Tendril(int len, double theta, int x, int y)
   {
     //your code here
+    myNumSegments = len;
+    myAngle = theta;
+    myX = x;
+    myY = y;
   }
   public void show()
   {
     //your code here
+    float startX = myX;
+    float startY = myY;
+    for (int i = 0; i < myNumSegments; i++) {
+      myAngle += (Math.random()*0.4) - 0.2;
+      float endX = startX + cos((float)myAngle)*SEG_LENGTH;
+      float endY = startY + sin((float)myAngle)*SEG_LENGTH;
+      line(startX, startY, endX, endY);
+      startX = endX;
+      startY = endY;
+    }
   }
+}
+Tendril bob;
+public void setup() {
+  size(400,400);
+  background(255);
+  bob = new Tendril(10, 45, 200, 200);
+}
+
+public void draw() {
+  background(255);
+  bob.show();
 }
