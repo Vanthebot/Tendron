@@ -28,19 +28,9 @@ class Tendril
       float endX = startX + cos((float)myAngle)*SEG_LENGTH;
       float endY = startY + sin((float)myAngle)*SEG_LENGTH;
       line(startX, startY, endX, endY);
+
       startX = endX;
       startY = endY;
     }
   }
-}
-Tendril bob;
-public void setup() {
-  size(400,400);
-  background(255);
-  bob = new Tendril(10, 45, 200, 200);
-}
-
-public void draw() {
-  background(255);
-  bob.show();
 }
